@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import List from './List.js';
+import store from './store.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Store prop with two keys, lists (array of objects) and allCards (object where each key is a card's ID and the value is the card object with a title and content).
+
+//List component should be rendered for each item in the store lists array
+
+class App extends Component {
+  render() {
+    return (
+      <main className="App">
+        <header className="App-header">
+          <h1>Trelloyes!</h1>
+        </header>
+        <div className="App-list">
+        {store.lists.map(list => {
+          const cardsForList = list.cardIds.map(id => store.allCards[id])
+          return (
+            <List
+              key={list.id}
+              header={list.header}
+              cards={cardsForList}
+            />
+          )})}
+        </div>
+      </main>
+    );
+  }
 }
 
 export default App;
