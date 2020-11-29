@@ -3,7 +3,7 @@ import './Card.css'
 
 
 class Card extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         // this.state = {};
         this.deleteCard = this.deleteCard.bind(this);
@@ -11,7 +11,7 @@ class Card extends React.Component {
     deleteCard(e) {
         console.log('delete button pressed');
     }
-    render(props){
+    render() {
         return (
             <div className="Card">
                 <button type="button" onClick={this.deleteCard}>delete</button>

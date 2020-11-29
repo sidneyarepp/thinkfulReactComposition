@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import List from './List.js';
 import store from './store.js';
 import './App.css';
@@ -15,15 +15,17 @@ class App extends Component {
           <h1>Trelloyes!</h1>
         </header>
         <div className="App-list">
-        {store.lists.map(list => {
-          const cardsForList = list.cardIds.map(id => store.allCards[id])
-          return (
-            <List
-              key={list.id}
-              header={list.header}
-              cards={cardsForList}
-            />
-          )})}
+          {store.lists.map((list, index) => {
+            const cardsForList = list.cardIds.map(id => store.allCards[id])
+            return (
+              <List
+                index={index}
+                key={list.id}
+                header={list.header}
+                cards={cardsForList}
+              />
+            )
+          })}
         </div>
       </main>
     );
